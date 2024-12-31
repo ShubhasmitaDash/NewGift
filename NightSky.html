@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Night Sky</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #001;
+    }
+
+    /* Background stars */
+    .stars {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/stardust.png');
+      z-index: -1;
+    }
+
+    /* Floating Hearts */
+    .floating-heart {
+      position: absolute;
+      font-size: 30px;
+      color: #e74c3c;
+      animation: float 6s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0);
+      }
+      50% {
+        transform: translateY(-50px) rotate(45deg);
+      }
+      100% {
+        transform: translateY(0) rotate(0);
+      }
+    }
+
+    /* Stagnant red heart in the top-right corner */
+    .heart {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 50px;
+      color: red;
+      cursor: pointer;
+      z-index: 1000;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .heart:hover {
+      transform: scale(1.2);
+    }
+
+    /* Main message */
+    .message {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1rem;
+      color: white;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      z-index: 1;
+    }
+
+    /* Twinkling Stars Animation */
+    .stars {
+      animation: twinkle 2s infinite alternate;
+    }
+
+    @keyframes twinkle {
+      0% {
+        opacity: 0.8;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Stars -->
+  <div class="stars"></div>
+
+  <!-- Floating Hearts -->
+  <div class="floating-heart" style="top: 10%; left: 15%;">❤️</div>
+  <div class="floating-heart" style="top: 20%; left: 40%;">❤️</div>
+  <div class="floating-heart" style="top: 30%; left: 60%;">❤️</div>
+  <div class="floating-heart" style="top: 40%; left: 25%;">❤️</div>
+  <div class="floating-heart" style="top: 50%; left: 80%;">❤️</div>
+  <div class="floating-heart" style="top: 60%; left: 55%;">❤️</div>
+
+  <!-- Stagnant Heart (Clickable to open Compatibility Page) -->
+  <div class="heart" onclick="openCompatibilityPage()">❤️</div>
+
+  <!-- Main message -->
+  <div class="message">
+    <h1>When I tell you I love you, I don't say it out of habit. I say it to remind you that you are the best thing that has ever happened to me. No matter where you are, a part of me will always be with you. Now Now click on the red heart to get another surprise, your Highness</h1>
+  </div>
+
+  <script>
+    // Function to redirect to Compatibility page when heart is clicked
+    function openCompatibilityPage() {
+      window.location.href = "LoveMeter.html"; // Change to the correct URL of your Compatibility page
+    }
+  </script>
+
+</body>
+</html>

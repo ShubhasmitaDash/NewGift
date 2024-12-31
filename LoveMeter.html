@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Love Meter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+
+    .container {
+      text-align: center;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .input {
+      margin: 10px 0;
+      padding: 10px;
+      font-size: 1.2rem;
+      width: 250px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .button {
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      background-color: #e74c3c;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background-color: #c0392b;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 2rem;
+      color: #2ecc71;
+    }
+
+    .angry-message {
+      color: #e74c3c;
+      font-size: 2rem;
+      margin-top: 20px;
+    }
+
+    .hidden-button {
+      display: none;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Interactive Love Meter</h1>
+    <input type="text" id="name1" class="input" placeholder="Enter first name" />
+    <input type="text" id="name2" class="input" placeholder="Enter second name" />
+    <button class="button" onclick="checkCompatibility()">Check Compatibility</button>
+    <div id="result" class="result"></div>
+    <div id="hiddenButton" class="hidden-button">
+      <button class="button" onclick="redirectToBirthday()">Go to Birthday Countdown</button>
+    </div>
+    <div id="angryMessage" class="angry-message"></div>
+  </div>
+
+  <script>
+    function checkCompatibility() {
+      const name1 = document.getElementById("name1").value.trim().toLowerCase();
+      const name2 = document.getElementById("name2").value.trim().toLowerCase();
+
+      // Check for either combination of names "Dev Aryan Parida" and "Shubhasmita Dash"
+      if ((name1 === "dev aryan parida" && name2 === "shubhasmita dash") ||
+          (name1 === "shubhasmita dash" && name2 === "dev aryan parida")) {
+        document.getElementById("result").innerHTML = "Compatibility: 100% 💖. YOU BOTH ARE MEANT TO BE TOGETHER. AND CREATE CUTE BABIES LIKE YOU THO";
+        document.getElementById("hiddenButton").style.display = "block";  // Show the button
+        document.getElementById("angryMessage").innerHTML = "";  // Hide any angry message
+      } else {
+        document.getElementById("result").innerHTML = "";
+        document.getElementById("hiddenButton").style.display = "none";  // Hide the button
+        document.getElementById("angryMessage").innerHTML = "You do know which names to enter, right? 😡";
+      }
+    }
+
+    function redirectToBirthday() {
+      // Redirect to the birthday countdown page
+      window.location.href = "CountDown.html";  // Replace with your actual countdown page URL
+    }
+  </script>
+</body>
+</html>

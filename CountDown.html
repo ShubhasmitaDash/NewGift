@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Countdown to His Birthday</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #2c3e50;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .countdown {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      font-weight: bold;
+      color: #e74c3c;
+    }
+
+    .button {
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      color: #fff;
+      background: #3498db;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      margin-top: 20px;
+    }
+
+    .button:hover {
+      background: #2980b9;
+    }
+
+    .message {
+      display: none;
+      margin-top: 20px;
+      font-size: 1.5rem;
+      color: #f39c12;
+      text-align: left;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    .birthday-message {
+      font-size: 4rem;
+      font-weight: bold;
+      color: #e74c3c;
+      display: none;
+      margin-top: 50px;
+    }
+
+    .countdown-title {
+      font-size: 1.5rem;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="countdown-title">Countdown till Your Birthday</div>
+  <div class="countdown" id="countdown"></div>
+
+  <button class="button" onclick="showRandomMessage()">Click for a Sweet Treats</button>
+
+  <div class="message" id="message"></div>
+
+  <div class="birthday-message" id="birthdayMessage">
+    <p>HAPPY BIRTHDAY!! 🎉</p>
+  </div>
+
+  <script>
+    // Birthday details (change the date to his birthday)
+    const birthday = new Date('January 18, 2025 00:00:00'); // His birthday is January 18, 2025
+
+    // Array of cheesy messages
+    const cheesyMessages = [
+      "Are you made of copper and tellurium? Because you're Cu-Te!",
+      "You must be a magician, because every time I look at you, everyone else disappears.",
+      "Do you have a map? Because I keep getting lost in your eyes.",
+      "I was wondering if you have an extra heart, because mine was just stolen!",
+      "Are you French? Because Eiffel for you!",
+      "If I could rearrange the alphabet, I would put U and I together.",
+      "Is your name Google? Because you have everything I’ve been searching for.",
+      "Are you a campfire? Because you’re hot and I want s’more.",
+      "Are you a loan from a bank? Because you have my interest.",
+      "If beauty were time, you’d be an eternity.",
+      "You are so handsome, that you made me forget my pickup line.",
+      "Do you believe in love at first sight, or should I walk by again?",
+      "Are you religious? Because you are answer to all my prayers",
+      "Are you lost sir? Because heaven is a long way from here",
+      "Do you have a tan, or do you always look this hot?",
+      "Are you a camera? Because every time I look at you, I smile.",
+      "If I followed you home, would you keep me?",
+      "Is it hot in here or is it just you?",
+      "I am no photographer, but I can picture us together.",
+      "Cutie, Can I borrow your picture? Because I would like to show Santa, my Christmas Gift."
+    ];
+
+    // Countdown function
+    function updateCountdown() {
+      const now = new Date();
+      const timeLeft = birthday - now;
+
+      if (timeLeft <= 0) {
+        document.getElementById('countdown').innerHTML = "HAPPY BIRTHDAY!! 🎉";
+        document.getElementById('birthdayMessage').style.display = "block"; // Show the birthday message
+        clearInterval(countdownInterval); // Stop the countdown once the birthday has passed
+      } else {
+        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+        document.getElementById('countdown').innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      }
+    }
+
+    // Function to show a random cheesy message
+    function showRandomMessage() {
+      const messageDiv = document.getElementById('message');
+      const randomMessage = cheesyMessages[Math.floor(Math.random() * cheesyMessages.length)];
+      messageDiv.innerHTML = randomMessage;
+      messageDiv.style.display = 'block';
+    }
+
+    // Update the countdown every second
+    const countdownInterval = setInterval(updateCountdown, 1000);
+  </script>
+
+</body>
+</html>
